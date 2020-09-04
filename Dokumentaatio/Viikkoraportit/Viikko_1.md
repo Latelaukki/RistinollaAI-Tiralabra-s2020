@@ -3,8 +3,8 @@
 
 pvm   | aika | 
 ------|------|
-4.9.  |  2   | 
-5.9.  |  5   |
+3.9.  |  2   | 
+4.9.  |  5   |
 
 
 Googlailen aiheita, ja todella vaikea päättää. Shakki tekoäly kiinnostaisi paljon, mutta luultavasti liian työläs, 
