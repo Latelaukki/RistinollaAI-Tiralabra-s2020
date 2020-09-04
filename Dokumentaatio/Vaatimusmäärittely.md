@@ -31,5 +31,7 @@ Tilavaativuus on myös O(2^m)(?), sillä algoritmi tallentaa kekoon mahdollisten
 
 ## Kurssiin liittyviä tietoja
 Työ tulee tietojenkäsittelytieteen kandidaatin tutkintoa varten
+
 Ohjelmakieli on Java
+
 Projektin dokumentaation ja ohjelma koodin kielenä on suomi
