@@ -1,1 +1,1 @@
-# Ristinollaratkaisija---Tiralabra-s2020
+# RistinollaAI-Tiralabra-s2020
