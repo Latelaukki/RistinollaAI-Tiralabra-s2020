@@ -3,18 +3,16 @@
 pvm   | aika |
 ------|------|
 v1    |      |
-------|------|
 3.9.  |  2   |
 4.9.  |  5   |
-------|------|
 vk2   |      |
-------|------|
 8.9.  |  3   |
 9.9.  |  4   |
 10.9. |  2   |
 ------|------|
 Yht.  |  16  |
 
+## Raportti
 
 Viikko 2 kului aika paljon vielä googlettelun parissa. Aloitin tietorakententeiden tekemisen, mutta jäi vielä aika
 vaiheeseen. Viime projektissani lähdin koodamaan liian aikasin ja jouduin uusimaan melkein kaiken, kun olin lähtenyt
