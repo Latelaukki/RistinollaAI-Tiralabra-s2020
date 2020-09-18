@@ -1,10 +1,13 @@
 
 package ristinolla.ui;
 
+import ristinolla.ui.Käyttöliittymä;
+
 public class Main {
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        new Käyttöliittymä();
+        
     }
     
 }

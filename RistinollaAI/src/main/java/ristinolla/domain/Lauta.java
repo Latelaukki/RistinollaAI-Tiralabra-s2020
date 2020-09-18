@@ -7,8 +7,8 @@ public class Lauta {
        this.lauta = new int[n][n];
    }
    
-   public void teeSiirto(int y, int x, int tunnus) {
-       this.lauta[y][x] = tunnus;
+   public void asetaLuku(int pelaajan_id, int y, int x) {
+       lauta[y-1][x-1] = pelaajan_id; 
    }
    
    public int[][] getLauta() {

@@ -23,3 +23,8 @@ jacocoTestReport {
 }
 
 check.dependsOn jacocoTestReport
+
+run {
+    standardInput = System.in
+    standardOutput = System.out
+}
