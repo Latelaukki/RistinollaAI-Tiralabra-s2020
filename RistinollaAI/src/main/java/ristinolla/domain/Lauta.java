@@ -14,4 +14,12 @@ public class Lauta {
    public int[][] getLauta() {
        return lauta;
    }
+   
+   public int getKoko() {
+       return lauta.length;
+   }
+   
+   public int getArvo(int y, int x) {
+       return lauta[y][x];
+   }
 }

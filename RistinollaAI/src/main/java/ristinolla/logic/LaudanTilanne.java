@@ -5,4 +5,5 @@ import ristinolla.domain.Lauta;
 
 public class LaudanTilanne {
     
+     
 }

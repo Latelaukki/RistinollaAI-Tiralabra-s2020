@@ -8,24 +8,27 @@ public class PelinKulku {
     int pelaaja_vuorossa;
     
     public PelinKulku() {
-        this.pelaaja_vuorossa = 1;
+        this.pelaaja_vuorossa = 0; //pelaaja = 1, ai = 2
     }
     
     public void luoLauta(int n) {
         lauta = new Lauta(n);
     }
     
+    public void luoAi() {
+        
+    }
+    
     public void vuoronVaihto() {
-        if (pelaaja_vuorossa == 1) {
-            pelaaja_vuorossa = 2;
-        } else {
+        if (pelaaja_vuorossa == 2) {
             pelaaja_vuorossa = 1;
+        } else {
+            pelaaja_vuorossa = 2;
         }
     }
     
     public void teeSiirto(int pelaaja_vuorossa, int x, int y) {
-        //lauta.muokkaaLautaa(pelaaja_vuorossa, x, y);
-    }
-    
+        lauta.asetaLuku(pelaaja_vuorossa, x, y);
+    }  
     
 }
