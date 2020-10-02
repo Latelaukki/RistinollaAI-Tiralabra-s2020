@@ -40,11 +40,14 @@ public class UserInterface {
                         System.out.println("Anna luku valilta 1-5");
                         continue;
                     }
+                    peli.teeSiirto(y, x);
                     break;                
-                }
-                peli.teeSiirto(y, x);
-                peli.vuoronVaihto();
+                }         
             }
+            if (peli.getPelaajaVuorossa() == 2) {
+                peli.teeSiirto(1, 1);
+            }
+            peli.vuoronVaihto();
         }
         if (peli.getVoittaja() == 2) {
             System.out.println("Onneksi olkoon, havisit pelin!");

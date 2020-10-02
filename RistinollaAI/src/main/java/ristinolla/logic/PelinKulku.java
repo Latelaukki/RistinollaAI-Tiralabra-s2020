@@ -12,7 +12,7 @@ public class PelinKulku {
     public PelinKulku() {
         this.lauta = new Lauta();
         this.voittaminen = new Voittaminen(lauta);
-        this.pelaajaVuorossa = 1; //pelaaja = 1, ai = 2 AINA
+        this.pelaajaVuorossa = 1; //pelaaja = 1, ai = 2 AINA, riippumatta kumpi aloittaa. Toistaiseksi pelaaja aloittaa
         this.voittaja = 0;
     }
     
@@ -33,7 +33,7 @@ public class PelinKulku {
     }
     
     public void teeSiirto(int y, int x) {
-        lauta.asetaLuku(y, x, pelaajaVuorossa);
+        lauta.asetaLuku(y - 1, x - 1, pelaajaVuorossa);
     }
     
     public void tarkistaVoittaminen() {

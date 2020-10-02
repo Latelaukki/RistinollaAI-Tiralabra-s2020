@@ -19,7 +19,7 @@ public class Lauta {
         return lauta.length;
     }
    
-    public int getLuku(int y, int x) {
+    public int getPelaaja(int y, int x) {
         return lauta[y][x];
     }
    

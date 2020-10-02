@@ -5,22 +5,24 @@ import ristinolla.domain.Lauta;
 public class Ai {
     private Lauta lauta;
     private int koko;
-    private Voittaminen voittaminen;
+    // private Voittaminen voittaminen;
     
     public Ai(Lauta lauta, int id) {
         this.lauta = lauta;
         this.koko = lauta.getKoko();
-        this.voittaminen = new Voittaminen(lauta);
+        //this.voittaminen = new Voittaminen(lauta);
     }
     
-    public void minimax(boolean maksimoiva_pelaaja, int syvyys) {     
+    public int minimax(int arvio, boolean maksimoiva_pelaaja, int syvyys) {
+        if (syvyys == 0) {
+            return tilanteenArviointi();
+        }
         if (maksimoiva_pelaaja) {       
-            int korkein = -99;
+            int korkein = -99999;
             for (int i = 0; i < koko; i++) {
                 for (int j = 0; j < koko; j++) {
-                    if (lauta.getLuku(i, j) != 0) {
+                    if (lauta.getPelaaja(i, j) != 0) {
                         continue;
-
                     }
                     lauta.asetaLuku(i, j, 2);
                     if (asemanLaskeminen() > korkein) {
@@ -32,11 +34,11 @@ public class Ai {
         }
     }
     
-    public int asemanLaskeminen() {
+    public int tilanteenArviointi() {
+        PeliTilanteenArviointi arvio = new PeliTilanteenArviointi(lauta, pelaaja);
         int pisteet = 0;
         return 1;
     }
     
-        
-    
+   
 }

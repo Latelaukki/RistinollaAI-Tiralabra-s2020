@@ -23,7 +23,7 @@ public class Voittaminen {
         int pelaaja = 0;       
         for (int i = 0; i < koko; i++) {
             for (int j = 0; j < koko; j++) {
-                pelaaja = lauta.getLuku(i, j);
+                pelaaja = lauta.getPelaaja(i, j);
                 if (pelaaja != 0) {
                     if (etsiSuoria(i, j, pelaaja)) {
                         return pelaaja;
@@ -35,7 +35,12 @@ public class Voittaminen {
     }
     
     public boolean etsiSuoria(int y, int x, int pelaaja) {
-        return tarkistaRivi(y, x, pelaaja) || tarkistaSarake(y, x, pelaaja) || tarkistaDiagonaali(y, x, pelaaja);
+        return tarkistaRivi(y, x, pelaaja) || tarkistaSarake(y, x, pelaaja) 
+                || tarkistaDiagonaalit(y, x, pelaaja);
+    }
+    
+    public boolean tarkistaDiagonaalit(int y, int x, int pelaaja) {
+       return tarkistaKaakkoLuodeDiagonaali(y, x, pelaaja) || tarkistaLounasKoillisDiagonaali(y, x, pelaaja);
     }
     
     public boolean tarkistaRivi(int y, int x, int pelaaja) {
@@ -44,7 +49,7 @@ public class Voittaminen {
             return false;
         }
         for (int i = x + 1; i < koko; i++) {
-            if (lauta.getLuku(y, i) == pelaaja) {
+            if (lauta.getPelaaja(y, i) == pelaaja) {
                 pisteet++;
             }
         }
@@ -57,24 +62,38 @@ public class Voittaminen {
             return false;
         }
         for (int i = y + 1; i < koko; i++) {
-            if (lauta.getLuku(i, x) == pelaaja) {
+            if (lauta.getPelaaja(i, x) == pelaaja) {
                 pisteet++;
             }
         }
         return pisteet == voittopisteet;     
     }   
     
-        public boolean tarkistaDiagonaali(int y, int x, int pelaaja) {
+    public boolean tarkistaKaakkoLuodeDiagonaali(int y, int x, int pelaaja) {
         int pisteet = 1;
         if (koko - x < voittopisteet || koko - y < voittopisteet) { //mahtuuko diagonaalille suoraa
             return false;
         }
-        for (int i = y + 1; i < koko; i++) {
-            for (int j = x + 1; j < koko; j++) {
-                if (lauta.getLuku(i, j) == pelaaja) {
-                    pisteet++;
-                }
+        int j = x + 1;
+        for (int i = y + 1; i < koko && j < koko ; i++, j++) {
+            if (lauta.getPelaaja(i, j) == pelaaja) {
+                pisteet++;
             }
+            
+        }
+        return pisteet == voittopisteet;
+    }
+    
+    public boolean tarkistaLounasKoillisDiagonaali(int y, int x, int pelaaja) {
+        int pisteet = 1;
+        if (x + 1 - voittopisteet < 0 || koko - y < voittopisteet) { //mahtuuko diagonaalille suoraa
+            return false;
+        }
+        int j = x - 1;
+        for (int i = y + 1; i < koko; i++, j--) {
+            if (lauta.getPelaaja(i, j) == pelaaja) {
+                pisteet++;
+            }      
         }
         return pisteet == voittopisteet;
     }

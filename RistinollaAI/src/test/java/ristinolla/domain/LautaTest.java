@@ -22,10 +22,12 @@ public class LautaTest {
     @Test
     public void palautaOikeaArvoLaudalta() {
         lauta.asetaLuku(4, 2, 2);
-        assertEquals(2, lauta.getLuku(4, 2));
+        assertEquals(2, lauta.getPelaaja(4, 2));
     }
     
+    @Test
     public void palautaLaudanSivunPituusOikein() {
         assertEquals(5, lauta.getKoko());
     }
+
 }
