@@ -16,7 +16,7 @@ public class Ai {
         //this.voittaminen = new Voittaminen(lauta);
     }
     
-    public void bottiSiirto() {
+    public void bottiSiirto() { 
         lauta.asetaLuku(this.y, this.x, 2);
     }
     
@@ -48,7 +48,7 @@ public class Ai {
         }
     }
     
-    public int tilanteenArviointi() {
+    public int tilanteenArviointi() { //toistaiseksi täysin vaiheessa
         PeliTilanteenArviointi arvio = new PeliTilanteenArviointi(lauta);
         int pisteet = 0;
         return 1;

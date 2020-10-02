@@ -3,7 +3,7 @@
 //
 //import ristinolla.domain.Lauta;
 //
-//public class Voittaminen {
+//public class Voittaminen {    //luultavasti j‰‰ turhaksi luokaksi
 //    private Lauta lauta;
 //    private int voittopisteet;
 //    private int koko;
