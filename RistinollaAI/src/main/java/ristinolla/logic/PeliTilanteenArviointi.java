@@ -10,12 +10,10 @@ public class PeliTilanteenArviointi {
     int voittopisteet;
     int pisteet;
     Lauta lauta;
-    int pelaaja;
     
-    public PeliTilanteenArviointi(Lauta lauta, int pelaaja) {
+    public PeliTilanteenArviointi(Lauta lauta) {
         this.lauta = lauta;
         this.pisteet = 0;
-        this.pelaaja = pelaaja;
         if (lauta.getKoko() > 5) {
             this.voittopisteet = 5;
         } else {
@@ -23,18 +21,23 @@ public class PeliTilanteenArviointi {
         }
     }
     
-    public int laskePisteet() {
+    public int laskePisteet() { //pisteiden laskussa toistaiseksi viel‰ useampi ongelma, esim samoja pisteit‰...
+        int pelaaja = 0;        //...lasketaan useaan kertaan. Lis‰ksi molempien pelaajien suorat lis‰‰v‰t pisteit‰
         for (int i = 0; i < lauta.getKoko(); i++) {
             for (int j = 0; j < lauta.getKoko(); j++) {
-                if (this.laskeSuorat(i, j) == 0) {
-                    this.vierekkaiset(i, j);
+                pelaaja = lauta.getPelaaja(i, j);
+                if (pelaaja == 0) {
+                    continue;
+                }
+                if (this.laskeSuorat(i, j, pelaaja) == 0) {
+                    this.vierekkaiset(i, j, pelaaja);
                 }
             }
         }
         return pisteet;
     }
     
-    public void vierekkaiset(int y, int x) {
+    public void vierekkaiset(int y, int x, int pelaaja) {
         for (int i = y - 1; i < 2; i++) {
             for (int j = x - 1; j < 2; j++) {
                 if (i > -1 && j > -1 && i != y && j != x && i < lauta.getKoko() && j < lauta.getKoko() ) {
@@ -46,12 +49,12 @@ public class PeliTilanteenArviointi {
         }
     }
     
-    public int laskeSuorat(int y, int x) {
+    public int laskeSuorat(int y, int x, int pelaaja) {
         int r, s, k, l; //v‰lipisteet, joilla tunnistetaan syntyneit‰ haarukoita, joista saa lis‰pisteit‰
-        r = this.laskeRivi(y, x);
-        s = this.laskeSarake(y, x);
-        k = this.laskeKaakkoLuodeDiagonaali(y, x);
-        l = this.laskeLounasKoillisDiagonaali(y, x);
+        r = this.laskeRivi(y, x, pelaaja);
+        s = this.laskeSarake(y, x, pelaaja);
+        k = this.laskeKaakkoLuodeDiagonaali(y, x, pelaaja);
+        l = this.laskeLounasKoillisDiagonaali(y, x, pelaaja);
         if (r == voittopisteet || s == voittopisteet || k == voittopisteet || l == voittopisteet ) {
             pisteet = 99999;
         }
@@ -63,43 +66,63 @@ public class PeliTilanteenArviointi {
     }
     
     
-    public int laskeRivi(int y, int x) {
+    public int laskeRivi(int y, int x, int pelaaja) {
         int valiPisteet = 0;
         for (int i = x + 1; i < lauta.getKoko(); i++) {
-            if (lauta.getPelaaja(y, i) == this.pelaaja) {
-                valiPisteet++;
+            if (lauta.getPelaaja(y, i) == pelaaja) {
+                if (pelaaja == 1) { 
+                    valiPisteet--;
+                } 
+                if (pelaaja == 2) {
+                    valiPisteet++;
+                }
             }
         }
         return valiPisteet;
     }
     
-    public int laskeSarake(int y, int x) { //aika copypaste-metodi, korjaan myˆhemmin
+    public int laskeSarake(int y, int x, int pelaaja) { //aika copypaste-metodi, korjaan myˆhemmin
         int valiPisteet = 0;
         for (int i = y + 1; i < lauta.getKoko(); i++) {
-            if (lauta.getPelaaja(i, x) == this.pelaaja) {
-                valiPisteet++;
+            if (lauta.getPelaaja(i, x) == pelaaja) {
+                if (pelaaja == 1) { 
+                    valiPisteet--;
+                } 
+                if (pelaaja == 2) {
+                    valiPisteet++;
+                }
             }
         }
         return valiPisteet;
     }   
     
-    public int laskeKaakkoLuodeDiagonaali(int y, int x) {
+    public int laskeKaakkoLuodeDiagonaali(int y, int x, int pelaaja) {
         int valiPisteet = 0;
         int j = x + 1;
         for (int i = y + 1; i < lauta.getKoko() && j < lauta.getKoko(); i++, j++) {
             if (lauta.getPelaaja(i, j) == pelaaja) {
-                valiPisteet++;
+                if (pelaaja == 1) { 
+                    valiPisteet--;
+                } 
+                if (pelaaja == 2) {
+                    valiPisteet++;
+                }
             }           
         }
         return valiPisteet;
     }
     
-    public int laskeLounasKoillisDiagonaali(int y, int x) {
+    public int laskeLounasKoillisDiagonaali(int y, int x, int pelaaja) {
         int valiPisteet = 0;
         int j = x - 1;
         for (int i = y + 1; i < lauta.getKoko(); i++, j--) {
             if (lauta.getPelaaja(i, j) == pelaaja) {
-                valiPisteet++;
+                if (pelaaja == 1) { 
+                    valiPisteet--;
+                } 
+                if (pelaaja == 2) {
+                    valiPisteet++;
+                }
             }      
         }
         return valiPisteet;
