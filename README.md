@@ -12,3 +12,5 @@ Toistaiseksi tekoälyosa on vielä vaiheessa, mutta ohjelma pyörii. Tekoäly to
 [viikkoraportti 4](https://github.com/Latelaukki/RistinollaAI-Tiralabra-s2020/blob/master/Dokumentaatio/Viikkoraportit/viikko_4.md)
 
 [viikkoraportti 5](https://github.com/Latelaukki/RistinollaAI-Tiralabra-s2020/blob/master/Dokumentaatio/Viikkoraportit/viikko_5.md)
+
+[viikkoraportti 6](https://github.com/Latelaukki/RistinollaAI-Tiralabra-s2020/blob/master/Dokumentaatio/Viikkoraportit/viikko_6.md)
