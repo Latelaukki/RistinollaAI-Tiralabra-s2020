@@ -18,6 +18,8 @@ public class PelinKulku {
     
     public void luoAi() {
         Ai ai = new Ai(this.lauta);
+        ai.minimax(0, 0, 2, true);
+        ai.bottiSiirto();
     }
     
     

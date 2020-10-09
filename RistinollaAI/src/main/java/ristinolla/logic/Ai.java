@@ -24,12 +24,15 @@ public class Ai {
         if (syvyys == 0) {
             this.y = y;
             this.x = x;
+            int valipisteet = tilanteenArviointi();
+            //System.out.println("pisteet: " + valipisteet);
             return tilanteenArviointi();
         }
         if (maksimoiva_pelaaja) {       
             int korkein = -999;
             for (int i = 0; i < koko; i++) {
                 for (int j = 0; j < koko; j++) {
+                    System.out.println("i: " + i + " j: " + j);
                     int arvio = minimax(i, j, syvyys - 1, false);
                     korkein = korkein > arvio ? korkein : arvio;
                 }
@@ -40,7 +43,7 @@ public class Ai {
             int matalin = 999;
             for (int i = 0; i < koko; i++) {
                 for (int j = 0; j < koko; j++) {
-                    int arvio = minimax(i, j, syvyys - 1, false);
+                    int arvio = minimax(i, j, syvyys - 1, true);
                     matalin = matalin < arvio ? matalin : arvio;
                 }
             }
@@ -50,8 +53,8 @@ public class Ai {
     
     public int tilanteenArviointi() { //toistaiseksi täysin vaiheessa
         PeliTilanteenArviointi arvio = new PeliTilanteenArviointi(lauta);
-        int pisteet = 0;
-        return 1;
+        int pisteet = arvio.laskePisteet();
+        return pisteet;
     }
     
    

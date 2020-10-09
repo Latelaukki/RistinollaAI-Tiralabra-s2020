@@ -3,7 +3,7 @@ package ristinolla.ui;
 import ristinolla.logic.PelinKulku;
 import java.util.Scanner;
 
-public class UserInterface {
+public class Kayttoliittyma {
     public void start() {
         PelinKulku peli = new PelinKulku();
         Scanner reader = new Scanner(System.in);
@@ -45,7 +45,7 @@ public class UserInterface {
                 }         
             }
             if (peli.getPelaajaVuorossa() == 2) {
-                peli.teeSiirto(1, 1);
+                peli.luoAi();
             }
             peli.vuoronVaihto();
         }

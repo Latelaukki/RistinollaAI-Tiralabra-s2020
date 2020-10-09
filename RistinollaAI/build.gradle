@@ -15,8 +15,8 @@ jacoco {
 }
 
 checkstyle {
-    toolVersion '2.17'    // your choice here
-    ignoreFailures = true
+    toolVersion '7.8.1'
+    configFile = file("checkstyle.xml")
 }
 
 repositories {

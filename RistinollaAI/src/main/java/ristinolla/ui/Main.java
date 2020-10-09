@@ -4,7 +4,7 @@ package ristinolla.ui;
 public class Main {
 
     public static void main(String[] args) {
-        UserInterface ui = new UserInterface();
+        Kayttoliittyma ui = new Kayttoliittyma();
         ui.start();
     }
     
