@@ -28,7 +28,7 @@ public class PeliTilanteenArviointi {
                     continue;
                 }
                 valipisteet += this.laskeSuorat(i, j, pelaaja);
-                if (valipisteet == 99999 || valipisteet == -99999) {
+                if (valipisteet == 999999 || valipisteet == -999999) {
                     return valipisteet;
                 }
                 valipisteet += this.laskeVierekkaiset(i, j, pelaaja);
@@ -63,8 +63,9 @@ public class PeliTilanteenArviointi {
         s = this.laskeSarake(y, x, pelaaja);
         k = this.laskeLuodeKaakkoDiagonaali(y, x, pelaaja);
         l = this.laskeKoillisLounasDiagonaali(y, x, pelaaja);
-        if (r == voittopisteet || s == voittopisteet || k == voittopisteet || l == voittopisteet ) {
-            valipisteet = (pelaaja == 1) ? -99999 : 99999;
+        if (r == voittopisteet || s == voittopisteet || k == voittopisteet || l == voittopisteet 
+                || r == -voittopisteet || s == -voittopisteet || k == -voittopisteet || l == -voittopisteet) {
+            valipisteet = (pelaaja == 1) ? -999999 : 999999;
         }
         else {
             valipisteet += this.laskeHaarukat(r, s, k, l, pelaaja);
@@ -91,7 +92,7 @@ public class PeliTilanteenArviointi {
         return valiPisteet;
     }
     
-    public int laskeSarake(int y, int x, int pelaaja) { //aika copypaste-metodi, korjaan myöhemmin
+    public int laskeSarake(int y, int x, int pelaaja) {
         int valiPisteet = 0;
         for (int i = y + 1; i < lauta.getKoko(); i++) {
             if (lauta.getPelaaja(i, x) == pelaaja) {
@@ -145,8 +146,8 @@ public class PeliTilanteenArviointi {
     
     public int laskeHaarukat(int r, int s, int k, int l, int pelaaja) {
         int valipisteet = 0;
-        if (r > 1 && s > 1) { //haarukat, jotka ovat eli 3 pitkiä, tuottavat lisäpisteitä eli suorapisteitä on 2+
-            valipisteet += 50; //3x3 erikoistapaus, haarukat toimii eri tavalla
+        if (r > 1 && s > 1) { //haarukat, jotka ovat yli 3 pitkiä, tuottavat lisäpisteitä eli suorapisteitä on 2+
+            valipisteet += 50; 
         }
         if (r > 1 && k > 1) { 
             valipisteet += 50;

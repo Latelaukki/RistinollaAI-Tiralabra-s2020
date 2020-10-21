@@ -18,11 +18,16 @@ public class PelinKulku {
     
     public void luoAi() {
         Ai ai = new Ai(this.lauta);
-        ai.minimax(0, 0, 2, true);
+        int arvio = ai.minimax(0, 0, 5, 0, true);
+        System.out.println("arvio: " + arvio);
         ai.bottiSiirto();
+        if (arvio == 999999) {
+            voittaja = 2;
+        }
+        if (arvio == -999999) {
+            voittaja = 1;
+        }
     }
-    
-    
     
     public int getPelaajaVuorossa() {
         return pelaajaVuorossa;
@@ -36,13 +41,13 @@ public class PelinKulku {
         }
     }
     
+    public boolean onkoTyhja(int y, int x) {
+        return lauta.getPelaaja(y - 1, x - 1) == 0;
+    } 
+    
     public void teeSiirto(int y, int x) {
         lauta.asetaLuku(y - 1, x - 1, pelaajaVuorossa);
     }
-    
-//    public void tarkistaVoittaminen() {
-//        voittaja = voittaminen.onkoVoittanut();
-//    }
     
     public int getVoittaja() {
         return voittaja;

@@ -13,42 +13,51 @@ public class Kayttoliittyma {
             peli.tulostaLauta();
             System.out.println("");
             if (peli.getPelaajaVuorossa() == 1) {
-                int y, x;
                 while(true) {
-                    System.out.println("y-koordinaatti: ");
-                    try {
-                        y  = Integer.valueOf(reader.nextLine());
-                    } catch (NumberFormatException e) {
-                        System.out.println("Koordinaatin on oltava luku");
-                        continue;
+                    int y, x;
+                    while(true) {
+                        System.out.println("y-koordinaatti: ");
+                        try {
+                            y  = Integer.valueOf(reader.nextLine());
+                        } catch (NumberFormatException e) {
+                            System.out.println("Koordinaatin on oltava luku");
+                            continue;
+                        }
+                        if (y < 1 || y > 5) {
+                            System.out.println("Anna luku valilta 1-5");
+                            continue;
+                        }
+                        break;                
                     }
-                    if (y < 1 || y > 5) {
-                        System.out.println("Anna luku valilta 1-5");
-                        continue;
+                    while(true) {
+                        System.out.println("x-koordinaatti: ");
+                        try {
+                            x  = Integer.valueOf(reader.nextLine());
+                        } catch (NumberFormatException e) {
+                            System.out.println("Koordinaatin on oltava luku");
+                            continue;
+                        }
+                        if (x < 1 || x > 5) {
+                            System.out.println("Anna luku valilta 1-5");
+                            continue;
+                        }
+                        break;
+                    }   
+                    if (peli.onkoTyhja(y, x)) {
+                        peli.teeSiirto(y, x);
+                        break;
                     }
-                    break;                
+                    else {
+                        System.out.println("Ruutu ei ole tyhja, anna uudet koordinaatit");    
+                    }
                 }
-                 while(true) {
-                    System.out.println("x-koordinaatti: ");
-                    try {
-                        x  = Integer.valueOf(reader.nextLine());
-                    } catch (NumberFormatException e) {
-                        System.out.println("Koordinaatin on oltava luku");
-                        continue;
-                    }
-                    if (x < 1 || x > 5) {
-                        System.out.println("Anna luku valilta 1-5");
-                        continue;
-                    }
-                    peli.teeSiirto(y, x);
-                    break;                
-                }         
             }
             if (peli.getPelaajaVuorossa() == 2) {
                 peli.luoAi();
-            }
+            }         
             peli.vuoronVaihto();
         }
+        peli.tulostaLauta();
         if (peli.getVoittaja() == 2) {
             System.out.println("Onneksi olkoon, havisit pelin!");
         } else {

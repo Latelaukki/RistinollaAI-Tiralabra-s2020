@@ -107,8 +107,37 @@ public class PeliTilanteenArviointiTest {
     }
     
     @Test
+    public void laskeLaudanPisteetOikeinPelaajaVoittaa() {
+        lauta.asetaLuku(0, 0, 1);
+        lauta.asetaLuku(0, 1, 1);
+        lauta.asetaLuku(0, 2, 1);
+        lauta.asetaLuku(0, 3, 1);
+        assertEquals(-99999, arvio.laskePisteet());
+    }
+    
+    @Test
     public void laskeLaudanPisteetOikeinEiVoittajaa() {
         lauta.asetaLuku(0, 1, 0); //poistetaan voittava piste
         assertEquals(45, arvio.laskePisteet());
+    }
+    
+    @Test
+    public void laskeLaudanPisteetOikeinEiVoittajaa2() {
+        Lauta lauta2 = new Lauta();
+        PeliTilanteenArviointi arvio2 = new PeliTilanteenArviointi(lauta2);
+        lauta2.asetaLuku(0, 0, 1);
+        lauta2.asetaLuku(0, 1, 1);
+        lauta2.asetaLuku(0, 2, 1);
+        lauta2.asetaLuku(0, 4, 1);
+        lauta2.asetaLuku(1, 4, 1);
+        lauta2.asetaLuku(2, 4, 1);
+        lauta2.asetaLuku(3, 4, 1);
+        lauta2.asetaLuku(4, 4, 1);
+        lauta2.asetaLuku(2, 1, 1);
+        lauta2.asetaLuku(3, 1, 1);
+        lauta2.asetaLuku(4, 1, 1);
+        lauta2.asetaLuku(4, 2, 1);
+        lauta2.asetaLuku(0, 3, 2);     
+        assertEquals(-99999, arvio2.laskePisteet());
     }
 }

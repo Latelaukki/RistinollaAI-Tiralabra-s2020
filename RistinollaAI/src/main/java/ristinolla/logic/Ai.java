@@ -12,38 +12,49 @@ public class Ai {
         this.lauta = lauta;
         this.koko = lauta.getKoko();
         this.y = 0;
-        this.x = 0;
-        //this.voittaminen = new Voittaminen(lauta);
+        this.x = 0; 
     }
     
     public void bottiSiirto() { 
         lauta.asetaLuku(this.y, this.x, 2);
     }
     
-    public int minimax(int y, int x, int syvyys, boolean maksimoiva_pelaaja) {
-        if (syvyys == 0) {
-            this.y = y;
-            this.x = x;
-            int valipisteet = tilanteenArviointi();
-            //System.out.println("pisteet: " + valipisteet);
+    public int minimax(int y, int x, int  maxsyvyys, int syvyys, boolean maksimoiva_pelaaja) {
+        if (syvyys == maxsyvyys) {
             return tilanteenArviointi();
         }
         if (maksimoiva_pelaaja) {       
-            int korkein = -999;
+            int korkein = -999999;
             for (int i = 0; i < koko; i++) {
                 for (int j = 0; j < koko; j++) {
-                    System.out.println("i: " + i + " j: " + j);
-                    int arvio = minimax(i, j, syvyys - 1, false);
-                    korkein = korkein > arvio ? korkein : arvio;
+                    if (lauta.getPelaaja(i, j) != 0) {
+                        continue;
+                    }
+                    lauta.asetaLuku(i, j, 2);                   
+                    int arvio = minimax(i, j, maxsyvyys, syvyys + 1, false);
+                    lauta.asetaLuku(i, j, 0);
+                    if (arvio > korkein) {
+                        korkein = arvio;    
+                        if (syvyys == 0) {
+                            this.y = i;
+                            this.x = j;
+                        }
+                    }
+                    
                 }
             }
             return korkein;
         }
         else {
-            int matalin = 999;
+            int matalin = 999999;
             for (int i = 0; i < koko; i++) {
-                for (int j = 0; j < koko; j++) {
-                    int arvio = minimax(i, j, syvyys - 1, true);
+                for (int j = 0; j < koko; j++)  {
+                    if (lauta.getPelaaja(i, j) != 0) {
+                        continue;
+                    }
+                    lauta.asetaLuku(i, j, 1);
+                    int arvio = minimax(i, j, maxsyvyys, syvyys + 1, true);
+                    lauta.asetaLuku(i, j, 0);
                     matalin = matalin < arvio ? matalin : arvio;
                 }
             }
@@ -51,11 +62,10 @@ public class Ai {
         }
     }
     
-    public int tilanteenArviointi() { //toistaiseksi täysin vaiheessa
+    public int tilanteenArviointi() { 
         PeliTilanteenArviointi arvio = new PeliTilanteenArviointi(lauta);
         int pisteet = arvio.laskePisteet();
         return pisteet;
     }
     
-   
 }
