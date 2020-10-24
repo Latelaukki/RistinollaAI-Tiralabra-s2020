@@ -12,5 +12,5 @@ Alfa-beeta -karsinnalla syvyydessä 7 7x7 ruudukossa botti laskee siirtoa noin 1
 Jos lasketaan syvyys 5, botti laskee 14x14 ruudukossa 16s. Syvyydessä 4, 15x15 ruudukossa 2s eli syvyydellä on selkeästi suurin merkitys laskentatehossa.
 Ohjelmassa olisi siis paljon optimointi varaa, jos halutaan nostaa täyden 15x15 ruudukon laskentasyvyyttä, joka samalla vaikuttaa merkittävästi tekoälyn älykkyyteen.
 
-![tehokkuusvertailu](https://github.com/Latelaukki/Tiralabra/blob/master/Dokumentaatio/Images/tehokkuusvertailu.png)
+![tehokkuusvertailu](https://github.com/Latelaukki/RistinollaAI-Tiralabra-s2020/blob/master/Dokumentaatio/Images/tehokkuusvertailu.png)
 
