@@ -1,0 +1,35 @@
+## Työaika
+
+pvm   | aika |
+------|------|
+vk1-  |      |
+vk4   |  43  |
+vk5   |      |
+30.9. |  3   |
+1.10. |  5   |
+2.10. |  9   |
+vk6   |      |
+8.10. |  4   |
+9.10. |  7   |
+vk7   |      |
+15.10.|  5   |
+16.10.|  8   |
+vk8   |      |
+18.10.|  3   |
+19.10.|  8   |
+20.10.|  6   |
+21.10.|  7   |
+22.10.|  8   |
+23.10.|  2   |
+24.10.|  10  | 
+Yht.  | 128  |
+
+## Raportti
+
+Työ jäi nyt sitten enemmän vaiheeseen kuin olisin kaivannut, koska ilmeni jatkuvasti bugeja nimenomaan voittajan löytymisessä. Ristinolla ruudukon koon muuttaminen
+aiheutti sen, että ohjelma jakaa voittoja 3x3 ruudukossa tilanteista. Lisäksi yli 7x7 toimivat äärimäisen hitaasti, joten kannattaa pitäytyä 4-7 ruudukoissa. Näyttäisivät toimivan 
+kohtuullisesti. Tämä oli tietysti odotettavissa, sillä alpha-beta -karsinnan lisäksi en ehtinyt paljon muuta optimointia suorittaa. Heurestiikassa olisi myös ollut
+paljon lisä säätöä, mutta suurin ongelma oli se, että voiton etsiminen jäi niin bugiseksi, enkä suoraan sanoen tiedä, miksi 3x3 ruudukko ei toimi. Lisäksi ohjelmassa on mahdollista laittaa botti pelaamaan itseään vastaan, mutta tämäkin menee ikuiseen looppiin eli varmaan ruudukon lähestyessä täyttymistä tapahtuu jotain outoa minimax- algoritmissa. Ainakin aikaisemmat bugit ovat viitanneet siihen.
+
+Ainakin tuli opittua todella paljon kurssin aikana, mutta harmillisesti oli niin kiireinen periodi, että jäi nyt sitten näin viimeistelemättömäksi tämä.
+   

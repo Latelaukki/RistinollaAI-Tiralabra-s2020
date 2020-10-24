@@ -2,4 +2,4 @@
 
 ## Yksikkötestit
 
-Ohjelma on testattu JUnit yksikkötesteillä. Ohjelmalogiikka on tarkoitus testaa mahdollisimman kattavasti. Käyttöliittymä ei sisälly testaukseen.
+Ohjelma on testattu JUnit yksikkötesteillä. Testit on kohdistettu ennen kaikkea metodeihin, joidin toimintavarmuus ei ilmene välttämättä käytössä. 
