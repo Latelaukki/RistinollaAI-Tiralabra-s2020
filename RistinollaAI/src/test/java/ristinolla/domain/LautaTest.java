@@ -10,17 +10,12 @@ public class LautaTest {
        
     @Before
     public void setUp() {
-        lauta = new Lauta();
+        lauta = new Lauta(5);
     }
     
-    @Test
-    public void asetaArvoOikein() {
-        lauta.asetaLuku(2, 3, 1);
-        assertEquals(1, lauta.getLauta()[2][3]);
-    }
     
     @Test
-    public void palautaOikeaArvoLaudalta() {
+    public void asetaJaPalautaOikeaArvoLaudalta() {
         lauta.asetaLuku(4, 2, 2);
         assertEquals(2, lauta.getPelaaja(4, 2));
     }
@@ -30,4 +25,18 @@ public class LautaTest {
         assertEquals(5, lauta.getKoko());
     }
 
+        @Test
+    public void lautaEiTaynnaPalauttaaFalse() {
+        assertEquals(false, lauta.onkoTaynna());
+    }
+    
+    @Test
+    public void lautaTaynnaPalauttaaTrue() {
+        for (int i = 0; i < lauta.getKoko(); i++) {
+            for (int j = 0; j < lauta.getKoko(); j++) {
+                lauta.asetaLuku(i, j, 1);
+            }
+        }
+        assertEquals(true, lauta.onkoTaynna());
+    }
 }
